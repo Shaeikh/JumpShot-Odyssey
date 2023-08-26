@@ -1,18 +1,121 @@
+import math, os
+import typing as t
+
 import pygame
 
-# Colors
-BLACK = (0, 0, 0)
-GRAY = (128, 128, 128)
+current_path = os.path.dirname(__file__)
 
-class Slider():
 
-    def __init__(surface, x, y, width, height, value, min_value, max_value, text, font):
-        pygame.draw.rect(surface, GRAY, (x, y, width, height))
+class Slider:
+    def __init__(
+        self,
+        rect: pygame.Rect,
+        min_value: int = 0,
+        max_value: int = 100,
+        step: int = 1,
+        callback: callable = lambda _: None,
+        slider_color: t.Tuple[int, int, int] = (255, 255, 255),
+        color: t.Tuple[int, int, int] = (0, 0, 0),
+    ):
+        self.min_value = min_value
+        self.max_value = max_value
+        self.range = max_value - min_value
+        self.step = min(self.range, max(step, self.range // rect.width))
+        self.callback = callback
+        self.rail = rect.inflate(0, -0.8 * rect.height)
+        self.slider_color = slider_color
+        self.color = color
+        # here the button will be a circle so circle collision detection will be done
+        # but the concept applies to rectangles as well, just use `colliderect`
+        # and a `pygame.Rect` here, you can inflate it as above to be a fraction of the length
+        # you also wouldn't need `self.x` and `self.y`
+        self.x, self.y = rect.center
+        self.radius = int(rect.width * 0.05)
+        # self.button = (rect.center, self.radius)  # (center, radius)
+        self.clicked = False
+        self.prev_value = 0
+
+    def update(self, events: list) -> None:
+        for event in events:
+            if (
+                event.type == pygame.MOUSEBUTTONDOWN
+                and event.button == 1
+                and self.collision(event.pos)
+            ):
+                self.clicked = True
+
+            elif (
+                event.type == pygame.MOUSEBUTTONUP
+                and event.button == 1
+                and self.clicked
+            ):
+                self.clicked = False
+                value = self.value
+                if self.prev_value != value:
+                    self.prev_value = value
+
+            elif event.type == pygame.MOUSEMOTION and self.clicked:
+                self.x, self.y = self.clamp_rail(event.pos)
+                self.value = round(self.value / self.step) * self.step
+
+    def collision(self, pos: t.Tuple[int, int]) -> bool:
+        mx, my = pos
+        dx, dy = abs(self.x - mx), abs(self.y - my)
+        if math.sqrt(dx**2 + dy**2) <= self.radius:
+            return True
+        return False
+
+    def draw(self, surface: pygame.Surface) -> None:
+        circle_center = (self.x, self.y)
+        circle_radius = self.radius
+        rectangle_width = circle_radius * 2
+        rectangle_height = circle_radius * 2
+        rectangle_top_left = (
+            circle_center[0] - circle_radius,
+            circle_center[1] - circle_radius,
+        )
+        pygame.draw.rect(surface, self.slider_color, self.rail, border_radius=2)
+
+        # pygame.draw.circle(surface, self.color, (self.x, self.y), 10)
+        pygame.draw.rect(
+            surface,
+            self.color,
+            (rectangle_top_left, (rectangle_width, rectangle_height)),
+            border_radius=5,
+        )
         
-        # Calculate slider position based on value
-        slider_pos = x + int((value - min_value) / (max_value - min_value) * width)
-        
-        pygame.draw.rect(surface, BLACK, (slider_pos, y, 5, height))
-        
-        text_surface = font.render(f"{text}: {value}", True, BLACK)
-        surface.blit(text_surface, (x - 200, y))
+
+        # Drawing text inside the rectangle
+        font = pygame.font.SysFont("Tahoma", 10)
+
+        text = font.render(str(self.value), True, (0, 0, 0))
+        text_rect = text.get_rect(center=(self.x, self.y))
+        surface.blit(text, text_rect)
+
+    def clamp_rail(self, pos: t.Tuple[int, int]) -> t.Tuple[int, int]:
+        x, y = pos
+        new_x = max(self.rail.left + self.radius, min(x, self.rail.right - self.radius))
+        return new_x, self.rail.centery
+
+    @property
+    def value(self) -> int:
+        distance = self.x - (
+            self.rail.left + self.radius
+        )  # self.button.centerx in case of a rectangle
+        rel_val = distance / (
+            self.rail.width - 2 * self.radius
+        )  # self.button.width instead of diameter for a rectangle
+        value = self.min_value + round((self.range * rel_val) / self.step) * self.step
+        return value
+
+    @value.setter
+    def value(self, value: int) -> None:
+        value = value and round(value / self.step) * self.step - self.min_value
+        rel_val = value / self.range
+        new_rel_pos = round(
+            rel_val * (self.rail.width - 2 * self.radius)
+        )  # look at value property `rel_val`
+        self.x = new_rel_pos + self.rail.left + self.radius
+        value += self.min_value
+        self.prev_value = value
+        self.callback(value)

@@ -55,7 +55,6 @@ button = Button(
 
 # Slider
 <pre>
-```py
 sound_effects_slider = Slider(
         rect,
         step=1, # Value which will be added or removed each time the slider is moved
@@ -63,7 +62,7 @@ sound_effects_slider = Slider(
         slider_color=color,
         color=color,
     )
-```
+
 </pre>
 
 

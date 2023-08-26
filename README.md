@@ -17,7 +17,7 @@ Enhance your PyGame projects with the Stylish PyGame GUI. This GUI includes butt
 - **Buttons:** Stylish buttons with animations for seamless user interaction.
 - **Sliders:** Dynamic sliders for settings like volume or brightness.
 > [!NOTE]
-> These sliders are modified version of https://github.com/pygame-examples/pygame-examples/blob/main/pgex/examples/horizontal_slider/main.py .
+> These sliders are modified version of https://github.com/pygame-examples/pygame-examples/blob/main/pgex/examples/horizontal_slider .
 
 - **Background Soundtrack:** Add ambiance with an integrated background soundtrack.
 - **Smooth Transitions:** Effortlessly transition between screens or levels.

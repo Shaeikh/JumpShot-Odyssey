@@ -61,4 +61,8 @@ slider = Slider(
     )
 ```
 
+## Credits
+Created by Shaeikh. Use, modify, and share with or without credit idc.
 
+## License
+This project is under the MIT License.

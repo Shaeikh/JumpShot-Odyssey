@@ -17,6 +17,7 @@ Enhance your PyGame projects with the Stylish PyGame GUI. This GUI includes butt
 - **Sliders:** Dynamic sliders for settings like volume or brightness.
 > [!NOTE]
 > These sliders are modified version of https://github.com/pygame-examples/pygame-examples/blob/main/pgex/examples/horizontal_slider/main.py .
+
 - **Background Soundtrack:** Add ambiance with an integrated background soundtrack.
 - **Smooth Transitions:** Effortlessly transition between screens or levels.
 - **Interactive:** Engage users with interactive elements and animations.
@@ -65,4 +66,4 @@ slider = Slider(
 Created by Shaeikh. Use, modify, and share with or without credit idc.
 
 ## License
-This project is under the MIT License.
+This project is under the [MIT License](https://github.com/Shaeikh/JumpShot-Odyssey/blob/main/LICENSE).

@@ -36,7 +36,6 @@ class Button():
         self.label = label
         self.clicked = False
         self.rect = pygame.Rect(self.x - self.left_enlarge, self.y, self.width + self.right_enlarge, self.height)
-        self.hover_sound = pygame.mixer.Sound(os.path.join(current_path, "assets/sound/hover.wav"))
 
     def draw(self, screen, center=True):
         if center:

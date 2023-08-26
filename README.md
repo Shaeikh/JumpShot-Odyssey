@@ -1,11 +1,12 @@
 # Stylish PyGame GUI
 
-![PyGame GUI Image 1](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/a0690710-6199-4d0a-a961-3b2f1cfff5c4)
-![PyGame GUI Image 2](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/1e74cab0-5e63-4b03-b77f-928d230a9a32)
-![PyGame GUI Image 3](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/975faf8e-31d5-47ee-8ceb-14724cc87fd1)
-![PyGame GUI Image 4](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/20fe6ae4-93ba-48b1-9fa0-c8b6da4c21fc)
+![image](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/9b848bae-9209-4225-b63b-1c49f3ade26d)
 
+![image](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/bbef607d-5ecc-4530-b22e-032c1239a2bb)
 
+![image](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/c9946ec4-1aa5-4245-a72b-f3570c454a8f)
+
+![image](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/506212da-5490-40e0-808d-ef6ec807f676)
 
 
 Enhance your PyGame projects with the Stylish PyGame GUI. This GUI includes buttons, sliders, background soundtracks, smooth screen transitions, and more, all designed to elevate your user's experience.

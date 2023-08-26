@@ -1,6 +1,5 @@
 import pygame, os, sys
 from pygame.locals import *
-from player import Player
 from button import Button
 from sliders import Slider
 
@@ -57,7 +56,7 @@ sound_effects_slider = Slider(
         callback=lambda val: pygame.mixer.music.set_volume(val / 100),
         slider_color=BLACK,
         color=WHITE,
-    )
+        )
 sound_effects_slider.value = 100
 master_volume_slider = Slider(
         pygame.Rect(screen_width - 230, 210, 200, 50),

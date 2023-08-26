@@ -1,4 +1,4 @@
-# Stylish PyGame GUI
+# GUI
 
 ![image](https://github.com/Shaeikh/JumpShot-Odyssey/assets/51645154/9b848bae-9209-4225-b63b-1c49f3ade26d)
 
@@ -37,7 +37,7 @@ git clone https://github.com/Shaeikh/JumpShot-Odyssey
 3. **Integration:** Import modules and customize elements.
 4. **Usage:** Create buttons, sliders, screens, and handle interactions.
 
-# Buttons
+## Buttons
 ```py
 # This is a basic button, for all params check the file
 button = Button(
@@ -52,7 +52,7 @@ button = Button(
     )
 ```
 
-# Slider
+### Slider
 ```py
 slider = Slider(
         rect,

@@ -28,7 +28,7 @@ Enhance your PyGame projects with the Stylish PyGame GUI. This GUI includes butt
 ```
   pip install pygame
 2. **Download:** Clone or download the the repo.
-<pre>
+</pre>
 ```
   git clone https://github.com/Shaeikh/JumpShot-Odyssey
 ```
@@ -37,6 +37,7 @@ Enhance your PyGame projects with the Stylish PyGame GUI. This GUI includes butt
 4. **Usage:** Create buttons, sliders, screens, and handle interactions.
 
 # Buttons
+<pre>
 ```py
 # This is a basic button, for all params check the file
 button = Button(
@@ -50,8 +51,10 @@ button = Button(
     label="Label" # Optional, this will be displayed beside the button
 )
 ```
+</pre>
 
 # Slider
+<pre>
 ```py
 sound_effects_slider = Slider(
         rect,
@@ -61,5 +64,6 @@ sound_effects_slider = Slider(
         color=color,
     )
 ```
+</pre>
 
 
